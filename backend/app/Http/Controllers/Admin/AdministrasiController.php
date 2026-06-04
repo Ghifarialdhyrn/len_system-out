@@ -9,11 +9,8 @@ use Illuminate\Http\Request;
 
 class AdministrasiController extends Controller
 {
-    public function update(
-        Request $request,
-        $id,
-        CertificateService $certificateService
-    ) {
+    public function update(Request $request, $id, CertificateService $certificateService)
+    {
         $validated = $request->validate([
             'laporan_akhir' => 'required|boolean',
             'absensi' => 'required|boolean',
