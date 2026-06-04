@@ -1,0 +1,11 @@
+@theme {
+  --color-len-red: #FF0000;
+  --color-len-red-dark: #CC0000;
+  --color-len-red-soft: #FFE5E5;
+
+  --color-len-blue: #1F5488;
+  --color-len-blue-soft: #E8F1FA;
+
+  --color-len-border: #D9DEE7;
+  --color-len-background: #F9FAFB;
+}

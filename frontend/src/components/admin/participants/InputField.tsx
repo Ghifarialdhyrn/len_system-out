@@ -1,0 +1,37 @@
+type InputFieldProps = {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  type?: string;
+  required?: boolean;
+};
+
+export default function InputField({
+  label,
+  name,
+  value,
+  onChange,
+  placeholder,
+  type = "text",
+  required = false,
+}: InputFieldProps) {
+  return (
+    <div>
+      <label className="block text-xs font-semibold text-[#414750] mb-2">
+        {label}
+      </label>
+
+      <input
+        name={name}
+        value={value}
+        onChange={onChange}
+        type={type}
+        required={required}
+        placeholder={placeholder}
+        className="w-full px-4 py-3 border border-[#c1c7d2] rounded-xl text-sm focus:outline-none focus:border-[#003e6f]"
+      />
+    </div>
+  );
+}
