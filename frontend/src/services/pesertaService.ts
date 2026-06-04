@@ -116,6 +116,11 @@ export async function updateAdministrasi(
   );
 }
 
+export type UpdatePesertaResponse = {
+  message: string;
+  data: PesertaMagang;
+};
+
 export async function updatePeserta(
   id: string | number,
   payload: {
@@ -129,8 +134,8 @@ export async function updatePeserta(
     tanggal_selesai: string;
     status_magang: "aktif" | "selesai";
   }
-) {
-  return apiFetch(
+): Promise<UpdatePesertaResponse> {
+  return apiFetch<UpdatePesertaResponse>(
     `/admin/peserta/${id}`,
     {
       method: "PUT",

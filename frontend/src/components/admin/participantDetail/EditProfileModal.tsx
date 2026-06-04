@@ -32,7 +32,7 @@ export default function EditProfileModal({
   const [errorMessage, setErrorMessage] = useState("");
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) {
     const { name, value } = e.target;
 
@@ -59,7 +59,7 @@ export default function EditProfileModal({
       onSuccess(response.data);
     } catch (error) {
       setErrorMessage(
-        error instanceof Error ? error.message : "Gagal memperbarui profil."
+        error instanceof Error ? error.message : "Gagal memperbarui profil.",
       );
     } finally {
       setSaving(false);
