@@ -14,7 +14,7 @@ function getToken() {
 async function apiFetch<T>(
   endpoint: string,
   options?: RequestInit,
-  auth = false
+  auth = false,
 ): Promise<T> {
   if (!API_URL) {
     throw new Error("NEXT_PUBLIC_API_URL belum diset di .env.local");
@@ -42,10 +42,10 @@ async function apiFetch<T>(
 }
 
 export async function searchPeserta(
-  noPeserta: string
+  noPeserta: string,
 ): Promise<SearchPesertaResponse> {
   return apiFetch<SearchPesertaResponse>(
-    `/search/${encodeURIComponent(noPeserta)}`
+    `/search/${encodeURIComponent(noPeserta)}`,
   );
 }
 
@@ -70,9 +70,13 @@ export async function getPesertaList(params?: {
 }
 
 export async function getPesertaDetail(
-  id: string | number
+  id: string | number,
 ): Promise<PesertaDetailResponse> {
-  return apiFetch<PesertaDetailResponse>(`/admin/peserta/${id}`);
+  return apiFetch<PesertaDetailResponse>(
+    `/admin/peserta/${id}`,
+    undefined,
+    true,
+  );
 }
 
 export async function createPeserta(payload: {
@@ -92,7 +96,7 @@ export async function createPeserta(payload: {
       method: "POST",
       body: JSON.stringify(payload),
     },
-    true
+    true,
   );
 }
 
@@ -105,14 +109,15 @@ export async function updateAdministrasi(
     pengembalian_idcard: boolean;
     pengembalian_aset: boolean;
     catatan?: string | null;
-  }
+  },
 ): Promise<UpdateAdministrasiResponse> {
   return apiFetch<UpdateAdministrasiResponse>(
     `/admin/peserta/${id}/administrasi`,
     {
       method: "PUT",
       body: JSON.stringify(payload),
-    }
+    },
+    true,
   );
 }
 
@@ -133,7 +138,7 @@ export async function updatePeserta(
     tanggal_mulai: string;
     tanggal_selesai: string;
     status_magang: "aktif" | "selesai";
-  }
+  },
 ): Promise<UpdatePesertaResponse> {
   return apiFetch<UpdatePesertaResponse>(
     `/admin/peserta/${id}`,
@@ -141,7 +146,7 @@ export async function updatePeserta(
       method: "PUT",
       body: JSON.stringify(payload),
     },
-    true
+    true,
   );
 }
 
@@ -151,7 +156,7 @@ export async function deletePeserta(id: string | number) {
     {
       method: "DELETE",
     },
-    true
+    true,
   );
 }
 
